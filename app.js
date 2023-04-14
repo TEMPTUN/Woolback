@@ -9,14 +9,14 @@ dotenv.config('.env');
 
 // app setup
 const app = express();
-const port = process.env.Port;
+const port = process.env.PORT;
 
 // middleware
 app.use(bodyparser.urlencoded({ extended: true }));
 app.use(bodyparser.json());
 app.use(cors(
     {
-        origin: process.env.Port,
+        origin: process.env.PORT,
         credentials: true
     }
 ));

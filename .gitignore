@@ -1,4 +1,17 @@
 */node_modules/
+*/.idea/
+*/.vscode/
+*/.DS_Store
+*/.gitignore
+*/.gitattributes
+*/.git/
+*/.npmrc
+*/.yarnrc
+*/.yarn-integrity
+*/.yarn-metadata.json
+*/.yarn/
+*/.yarn-unplugged
+node_modules/
 package.json/
 package-lock.json/
 
