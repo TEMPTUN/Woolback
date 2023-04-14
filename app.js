@@ -3,7 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const bodyparser = require("body-parser");
-// const route = require("./routes/conversion.js")
+const route = require("./routes/conversion.js")
 dotenv.config('.env');
 
 
@@ -25,9 +25,9 @@ app.use(cors(
 app.get("/", (req, res) => {
     res.send("Hello ");
 });
-// app.use("/api", route);
+app.use("/api", route);
 
-app.listen(port, () => {
+app.listen(3000, () => {
     console.log(`Listening on port ${port}`);
     }
 );
