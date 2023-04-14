@@ -1,8 +1,8 @@
-const express = require("express");
-const router = express.Router();
-const controller = require("../controller/concontroller.js");
+import { Router } from "express";
+import controller from "../controller/concontroller.js";
 
+const router = Router();
 
 router.get("/mpthree",controller.mpthree)
 
-module.exports = router;
+export default router;

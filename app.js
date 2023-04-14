@@ -1,9 +1,9 @@
 // package require
-const express = require("express");
-const cors = require("cors");
-const dotenv = require("dotenv");
-const bodyparser = require("body-parser");
-const route = require("./routes/conversion.js")
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import bodyparser from "body-parser";
+import route from "./routes/conversion.js";
 dotenv.config('.env');
 
 
