@@ -1,5 +1,5 @@
 import connectmongo from '../utils/connectmongo.js';
-import User from '../models/user.js';
+import User from '../models/User.js';
 const obj={
     signup: async(req,res)=>{
         await connectmongo();
