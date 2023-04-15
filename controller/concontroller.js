@@ -1,15 +1,17 @@
 import connectmongo from '../utils/connectmongo.js';
 import User from '../models/User.js';
+import bcrypt from 'bcryptjs';
 const obj={
     signup: async(req,res)=>{
         await connectmongo();
         if(req.method === 'POST'){  //SignUP
             try{
-                const { name,email,password } = req.body; 
+                const { name,email,password } = req.body;
+                const pass = await bcrypt.hash(password,12);
                 const Userdata = new User({
                     name: name,
                     email: email,
-                    password: password,
+                    password: pass,
                 })
                 const result = await User.insertMany([Userdata]);
                 res.status(200).json({ id:result[0]._id,message:"User connected Succesfully"});
@@ -23,8 +25,14 @@ const obj={
         if(req.method === 'GET'){
             try{
                 const { email,password } = req.query;
-                const Userdata = await User.findOne({email:email,password:password});
-                res.status(200).json({ id:Userdata._id,success:true,message:"User connected Succesfully"});
+                const Userdata = await User.findOne({email:email});
+                if(!Userdata)  res.status(200).json({ success:false,message:"User not found"});
+                if(await bcrypt.compare(password,Userdata.password)){
+                    res.status(200).json({ id:Userdata._id,success:true,message:"User connected Succesfully"});
+                }
+                else{
+                    res.status(400).json({message:"Invalid Password",success:false});
+                }
             }
             catch(err){
                 res.status(400).json({message:err.message,success:false});
