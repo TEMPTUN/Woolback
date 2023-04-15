@@ -52,7 +52,10 @@ const obj={
 
                 if(names!==false) await User.findOneAndUpdate({_id:id},{name:names}).then((data)=>console.log(data)).catch((err)=>console.log(err.message))
                 if(email!==false) await User.findOneAndUpdate({_id:id},{email:email})
-                if(password!==false) await User.findOneAndUpdate({_id:id},{password:password})
+                if(password!==false){
+                    const pass = await bcrypt.hash(password,12)
+                    await User.findOneAndUpdate({_id:id},{password:pass})
+                }
                 if(image!==false) await User.findOneAndUpdate({_id:id},{image:image})
                 if(bio!==false) await User.findOneAndUpdate({_id:id},{bio:bio})
                
