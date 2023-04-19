@@ -9,5 +9,6 @@ router.put("/proupdate",controller.proupdate)
 router.put("/follow",controller.follow)
 router.put("/eduupdate",controller.eduupdate)
 router.get("/getuser",controller.userfetch)
+router.get("/getip",controller.getip)
 
 export default router;
