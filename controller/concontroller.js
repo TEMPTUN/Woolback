@@ -50,6 +50,11 @@ const obj={
                 const image = req.body.image===undefined?false:req.body.image;
                 const bio = req.body.bio===undefined?false:req.body.bio;
                 const email = req.body.email===undefined?false:req.body.email;
+                const number = req.body.number===(undefined || "undefined")?false:req.body.number;
+                const location = req.body.location===(undefined || "undefined")?false:req.body.location;
+                const dob = req.body.dob===(undefined || "undefined")?false:req.body.dob;
+                const gender = req.body.gender===(undefined || "undefined")?false:req.body.gender;
+                const martialStatus = req.body.martialstatus===(undefined || "undefined")?false:req.body.martialstatus;
 
                 if(names!==false) await User.findOneAndUpdate({_id:id},{name:names}).then((data)=>console.log(data)).catch((err)=>console.log(err.message))
                 if(email!==false) await User.findOneAndUpdate({_id:id},{email:email})
@@ -59,6 +64,11 @@ const obj={
                 }
                 if(image!==false) await User.findOneAndUpdate({_id:id},{image:image})
                 if(bio!==false) await User.findOneAndUpdate({_id:id},{bio:bio})
+                if(number!==false) await User.findOneAndUpdate({_id:id},{mobilenum:number})
+                if(location!==false) await User.findOneAndUpdate({_id:id},{loaction:location})
+                if(dob!==false) await User.findOneAndUpdate({_id:id},{dob:dob})
+                if(gender!==false) await User.findOneAndUpdate({_id:id},{gender:gender})
+                if(martialStatus!==false) await User.findOneAndUpdate({_id:id},{martialStatus:martialStatus})
                
                 res.status(200).json({message:"User Updated Succesfully"});
             }catch(err){
