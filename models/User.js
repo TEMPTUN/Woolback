@@ -22,9 +22,24 @@ const user = new Schema({
     bio:{
         type:String,
     },
+    mobilenum:{
+        type:String
+    },
     friendId:[{type:String,default:[]}],
     educationId:[{type:Schema.Types.Mixed,default:[]}],
     linkId:[{type:Schema.Types.Mixed,default:[]}],
+    dob:{
+        type:Date,
+    },
+    gender:{
+        type:String
+    },
+    loaction:{
+        type:String,
+    },
+    martialStatus:{
+        type:String
+    },
     createdAt:{
         type:Date,
         default:Date.now

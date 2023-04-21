@@ -1,7 +1,7 @@
 import connectmongo from '../utils/connectmongo.js';
 import User from '../models/User.js';
 import bcrypt from 'bcryptjs';
-import ip from 'ip';
+import http from 'http';
 const obj={
     signup: async(req,res)=>{
         await connectmongo();
@@ -112,8 +112,9 @@ const obj={
     },
     getip: async(req,res)=>{
         if(req.method === 'GET'){
-            const ipaddress = ip.address();
-            res.status(200).json({ip:ipaddress});
+            http.createServer(function(req,res){
+                res.status(200).send(`The client's IP Address is: ${req.socket.remoteAddress}`);
+})
         }
     }
 }
