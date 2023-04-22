@@ -100,7 +100,7 @@ const obj={
                 const intrests = req.body.intrests===undefined?false:req.body.intrests;
 
                 if(links!=false) await User.findOneAndUpdate({_id:id},{linkId:links}).then((data)=>console.log(data)).catch((err)=>console.log(err.message))
-                if(education!=false) await User.findOneAndUpdate({_id:id},{educationId:education})
+                if(education!=false) await User.findOneAndUpdate({_id:id},{$push:{educationId:education}}).then((data)=>console.log(data)).catch((err)=>console.log(err.message))
                 if(intrests!=false) await User.findOneAndUpdate({_id:id},{intrestsId:intrests})
 
                 res.status(200).json({message:"User Updated Succesfully"});
