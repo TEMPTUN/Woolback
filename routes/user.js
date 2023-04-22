@@ -14,5 +14,6 @@ router.get("/setinfo",controller.setinfo)
 router.put("/getstudy",controller.getstudy)
 router.get("/getinfo",controller.getinfo)
 router.put("/settest",controller.settest)
+router.put("/seteme",controller.seteducation)
 
 export default router;
