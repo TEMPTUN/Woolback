@@ -5,7 +5,21 @@ const info = new Schema({
         type:String,
         required:true
     },
-    studyId:[{type:Schema.Types.Mixed,default:[]}],
+    courselevel:{
+        type:String,
+    },
+    countrychoice:{
+        type:String,
+    },
+    coursetype:{
+        type:String,
+    },
+    studychoice:{
+        type:String,
+    },
+    budget:{
+        type:String,
+    },
     testscoreId:[{type:Schema.Types.Mixed,default:[]}],
     additionalId:[{type:Schema.Types.Mixed,default:[]}],
     lorId:[{type:Schema.Types.Mixed,default:[]}],
