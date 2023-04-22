@@ -2,7 +2,7 @@ import connectmongo from '../utils/connectmongo.js';
 import User from '../models/User.js';
 import bcrypt from 'bcryptjs';
 import http from 'http';
-import Info from '../models/Info.js';
+import Info from '../models/info.js';
 const obj={
     signup: async(req,res)=>{
         await connectmongo();
