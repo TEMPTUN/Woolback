@@ -2,6 +2,7 @@ import connectmongo from '../utils/connectmongo.js';
 import User from '../models/User.js';
 import bcrypt from 'bcryptjs';
 import http from 'http';
+import Info from '../models/Info.js';
 const obj={
     signup: async(req,res)=>{
         await connectmongo();
@@ -125,6 +126,58 @@ const obj={
             http.createServer(function(req,res){
                 res.status(200).send(`The client's IP Address is: ${req.socket.remoteAddress}`);
 })
+        }
+    },
+    setinfo: async(req,res)=>{
+        await connectmongo();
+        if(req.method === 'GET'){
+            const info = new Info({
+                userId:req.query.id,
+            })
+            try{
+                const id = req.query.id;
+                const response = await Info.insertMany([info]);
+                res.status(200).json({message:"User Updated Succesfully"});
+            }catch(err){
+                res.status(400).json({message:err.message});
+            }
+        }
+    },
+    getstudy: async(req,res)=>{
+        await connectmongo();
+        if(req.method === 'PUT'){
+            try{
+                const id = req.body.id;
+                const clevel = req.body.ctype===('' || "undefined" || undefined)?false:req.body.courselevel;
+                const conchoice = req.body.conchoice===('' || "undefined" || undefined)?false:req.body.countrychoice;
+                const studychoice = req.body.cchoice===('' || "undefined" || undefined)?false:req.body.studychoice;
+                const coursetype = req.body.coursechoice===('' || "undefined" || undefined)?false:req.body.coursetype;
+                const budget = req.body.budget===('' || "undefined" || undefined)?false:req.body.budget;
+                
+                console.log(clevel,conchoice,studychoice,coursetype,budget)
+                if(clevel!=false) await Info.findOneAndUpdate({userId:id},{courselevel:clevel}).then((data)=>console.log(data)).catch((err)=>console.log(err.message))
+                if(conchoice!=false) await Info.findOneAndUpdate({userId:id},{countrychoice:conchoice})
+                if(studychoice!=false) await Info.findOneAndUpdate({userId:id},{studychoice:studychoice})
+                if(coursetype!=false) await Info.findOneAndUpdate({userId:id},{coursetype:coursetype})
+                if(budget!=false) await Info.findOneAndUpdate({userId:id},{budget:budget})
+
+
+                res.status(200).json({message:"User Updated Succesfully"});
+            }catch(err){
+                res.status(400).json({message:err.message});
+            }
+        }
+    },
+    getinfo:async(req,res)=>{
+        await connectmongo();
+        if(req.method === 'GET'){
+            try{
+                const id = req.query.id;
+                const response = await Info.find({userId:id});
+                res.status(200).json(response[0]);
+            }catch(err){
+                res.status(400).json({message:err.message});
+            }
         }
     }
 }

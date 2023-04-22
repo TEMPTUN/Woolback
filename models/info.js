@@ -7,18 +7,23 @@ const info = new Schema({
     },
     courselevel:{
         type:String,
+        default:""
     },
     countrychoice:{
         type:String,
+        default:""
     },
     coursetype:{
         type:String,
+        default:""
     },
     studychoice:{
         type:String,
+        default:""
     },
     budget:{
         type:String,
+        default:""
     },
     testscoreId:[{type:Schema.Types.Mixed,default:[]}],
     additionalId:[{type:Schema.Types.Mixed,default:[]}],
