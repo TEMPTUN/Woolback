@@ -13,5 +13,6 @@ router.get("/getip",controller.getip)
 router.get("/setinfo",controller.setinfo)
 router.put("/getstudy",controller.getstudy)
 router.get("/getinfo",controller.getinfo)
+router.put("/settest",controller.settest)
 
 export default router;

@@ -179,6 +179,19 @@ const obj={
                 res.status(400).json({message:err.message});
             }
         }
+    },
+    settest: async(req,res)=>{
+        await connectmongo();
+        if(req.method === 'PUT'){
+            try{
+                const id = req.body.id;
+                const test = req.body.test.length===0?false:req.body.test;
+                if(test!=false) await Info.findOneAndUpdate({userId:id},{$push:{testscoreId:test}}).then((data)=>console.log(data)).catch((err)=>console.log(err.message))
+                res.status(200).json({message:"User Updated Succesfully"});
+            }catch(err){
+                res.status(400).json({message:err.message});
+            }
+        }
     }
 }
 export default obj
