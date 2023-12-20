@@ -40,9 +40,9 @@ const obj={
     },
     blogc:async(req,res)=>{
         await connectmongo();
-        if(req.method === 'GET'){
+        if(req.method === 'POST'){
             try{
-                const {username,title,summary,content,image,date}=req.query;
+                const {username,title,summary,content,image,date}=req.body;
                 const newblog= new Ogblogs({
                     username:username,
                     title:title,
