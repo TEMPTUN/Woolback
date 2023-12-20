@@ -40,9 +40,9 @@ const obj={
     },
     blogc:async(req,res)=>{
         await connectmongo();
-        if(req.method === 'POST'){
+        if(req.method === 'GET'){
             try{
-                const {username,title,summary,content,image,date}=req.body;
+                const {username,title,summary,content,image,date}=req.query;
                 const newblog= new Ogblogs({
                     username:username,
                     title:title,
@@ -52,8 +52,7 @@ const obj={
                     image:image
                 }); 
 
-                
-                const result=await newblog.save();  
+                await newblog.save();  
                
                 res.status(200).json({ success:true,message:"Blog added Succesfully"});
             }catch(err){

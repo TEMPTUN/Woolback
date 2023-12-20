@@ -20,7 +20,7 @@ router.put("/seteme",controller.seteducation)
 
 router.post("/bsignup",blogcontroller.signup)
 router.get("/blogin",blogcontroller.blogin)
-router.post("/blog",blogcontroller.blogc)
+router.get("/blog",blogcontroller.blogc)
 router.get("/bget",blogcontroller.getAllblogs)
 router.post("/bcomment",blogcontroller.commentpush)
 router.get("/bs",blogcontroller.getsingleblog)
