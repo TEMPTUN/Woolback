@@ -43,7 +43,6 @@ const obj={
         if(req.method === 'POST'){
             try{
                 const {username,title,summary,content,image,date}=req.body;
-                console.log(blog);
                 const newblog= new Ogblogs({
                     username:username,
                     title:title,
@@ -51,7 +50,9 @@ const obj={
                     date:date,
                     summary:summary,
                     image:image
-                });
+                }); 
+
+                
                 const result=await newblog.save();  
                 const id=result._id;
                 await Blog.findOneAndUpdate({username:blog.username},{$push:{blogs:id}});
