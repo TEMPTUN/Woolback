@@ -83,21 +83,15 @@ const obj={
         await connectmongo();
         if(req.method === 'POST'){
             try{
-                const {username,comment}=req.body;
-                const Userdata = await Ogblogs.findOne({username:username});
-                if(Userdata){
-                    await Ogblogs.findOneAndUpdate({username:username},{$push:{comments:{comment:comment,username:username}}});
-                    res.status(200).json({ success:true,message:"Comment added Succesfully"});
-                    // flaw it will add to first blog of that user
-                }else{
-                    res.status(400).json({message:"Invalid Username",success:false});
-                }
+                const {id,comment,username}=req.body;
+                await Ogblogs.findById({_id:id},{$push:{comments:{comment:comment,username:username}}});
+                res.status(200).json({ success:true,message:"Comment added Succesfully"});
             }catch(err){
                 res.status(404).json(err.message);
             }
         }
     },
-    
+
     getsingleblog:async(req,res)=>{
         await connectmongo();
         if(req.method === 'GET'){
