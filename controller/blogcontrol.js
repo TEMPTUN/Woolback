@@ -101,14 +101,10 @@ const obj={
         await connectmongo();
         if(req.method === 'GET'){
             try{
-                const {id}=req.query;
-                await Ogblogs.findById({_id:id}).exec()
-                .then((documents) => {
-                    res.status(200).json(documents);
-                })
-                .catch((err) => {
-                    res.status(404).json(err.message);
-                });
+                const { id }=req.query;
+
+                const result=await Ogblogs.findById({_id:id});
+                res.status(200).json(result);
             }catch(err){
                 res.status(404).json(err.message);
             }

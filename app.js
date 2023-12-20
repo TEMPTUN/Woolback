@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
 app.use("/api", route);
 
 
-app.listen(`${port}`, () => {
+app.listen(`${post}`, () => {
     console.log(`Listening on port ${port}`);
     }
 );
