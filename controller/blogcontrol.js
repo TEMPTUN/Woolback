@@ -42,15 +42,15 @@ const obj={
         await connectmongo();
         if(req.method === 'POST'){
             try{
-                const blog=req.body;
+                const {username,title,summary,content,image,date}=req.body;
                 console.log(blog);
                 const newblog= new Ogblogs({
-                    username:blog.username,
-                    title:blog.title,
-                    content:blog.content,
-                    date:blog.date,
-                    summary:blog.summary,
-                    image:blog?.image
+                    username:username,
+                    title:title,
+                    content:content,
+                    date:date,
+                    summary:summary,
+                    image:image
                 });
                 const result=await newblog.save();  
                 const id=result._id;
