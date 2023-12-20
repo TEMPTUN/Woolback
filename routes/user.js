@@ -22,7 +22,6 @@ router.post("/bsignup",blogcontroller.signup)
 router.get("/blogin",blogcontroller.blogin)
 router.post("/blog",blogcontroller.blogc)
 router.get("/bget",blogcontroller.getAllblogs)
-// specfic user blog only page api
 router.post("/bcomment",blogcontroller.commentpush)
 router.get("/bs",blogcontroller.getsingleblog)
 

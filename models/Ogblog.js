@@ -18,16 +18,7 @@ const Ogblogs= new Schema({
         image:{
             type:String
         },
-        comments:[
-            {
-                username:{
-                    type:String
-                },
-                comment:{
-                    type:String
-                }
-            }
-        ]
+        comments:[{type:String}]
 },{ timestamps: true });   
 
 const ogblogs = model('Ogblogs', Ogblogs);

@@ -29,7 +29,7 @@ app.get("/", (req, res) => {
 app.use("/api", route);
 
 
-app.listen(`${port}`, () => {
+app.listen(4000, () => {
     console.log(`Listening on port ${port}`);
     }
 );

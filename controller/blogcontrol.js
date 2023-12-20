@@ -55,8 +55,6 @@ const obj={
                 const result=await newblog.save();  
                 const id=result._id;
                 await Blog.findOneAndUpdate({username:blog.username},{$push:{blogs:id}});
-
-
                 res.status(200).json({ success:true,message:"Blog added Succesfully"});
             }catch(err){
                 res.status(404).json(err.message);
@@ -83,8 +81,8 @@ const obj={
         await connectmongo();
         if(req.method === 'POST'){
             try{
-                const {id,comment,username}=req.body;
-                await Ogblogs.findById({_id:id},{$push:{comments:{comment:comment,username:username}}});
+                const {id,comment}=req.body;
+                await Ogblogs.findById({_id:id},{$push:{comments:comment}});
                 res.status(200).json({ success:true,message:"Comment added Succesfully"});
             }catch(err){
                 res.status(404).json(err.message);
