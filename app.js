@@ -25,10 +25,11 @@ app.use(cors(
 app.get("/", (req, res) => {
     res.send("Hello ");
 });
+
 app.use("/api", route);
 
 
-app.listen(`${post}`, () => {
+app.listen(`${port}`, () => {
     console.log(`Listening on port ${port}`);
     }
 );
