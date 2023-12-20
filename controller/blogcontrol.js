@@ -42,7 +42,7 @@ const obj={
         await connectmongo();
         if(req.method === 'POST'){
             try{
-                const {blog}=req.body;
+                const blog=req.body;
                 console.log(blog);
                 const newblog= new Ogblogs({
                     username:blog.username,
