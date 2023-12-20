@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
 app.use("/api", route);
 
 
-app.listen(3000, () => {
+app.listen(`${port}`, () => {
     console.log(`Listening on port ${port}`);
     }
 );
