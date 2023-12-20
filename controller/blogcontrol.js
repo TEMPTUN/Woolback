@@ -97,6 +97,7 @@ const obj={
             }
         }
     },
+    
     getsingleblog:async(req,res)=>{
         await connectmongo();
         if(req.method === 'GET'){
