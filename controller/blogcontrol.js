@@ -102,7 +102,6 @@ const obj={
         if(req.method === 'GET'){
             try{
                 const { id }=req.query;
-
                 const result=await Ogblogs.findById({_id:id});
                 res.status(200).json(result);
             }catch(err){
