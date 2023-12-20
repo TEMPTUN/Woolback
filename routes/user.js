@@ -1,5 +1,6 @@
 import { Router } from "express";
 import controller from "../controller/concontroller.js";
+import blogcontroller from "../controller/blogcontrol.js";
 
 const router = Router();
 
@@ -15,5 +16,14 @@ router.put("/getstudy",controller.getstudy)
 router.get("/getinfo",controller.getinfo)
 router.put("/settest",controller.settest)
 router.put("/seteme",controller.seteducation)
+
+
+router.post("/bsignup",blogcontroller.signup)
+router.get("/blogin",blogcontroller.blogin)
+router.post("/blog",blogcontroller.blogc)
+router.get("/bget",blogcontroller.getAllblogs)
+// specfic user blog only page api
+router.post("/bcomment",blogcontroller.commentpush)
+
 
 export default router;
