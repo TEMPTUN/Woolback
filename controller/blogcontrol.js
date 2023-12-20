@@ -101,8 +101,8 @@ const obj={
         await connectmongo();
         if(req.method === 'GET'){
             try{
-                const id=req.query;
-                await Ogblogs.findOne({_id:id}).exec()
+                const {id}=req.query;
+                await Ogblogs.findById({_id:id}).exec()
                 .then((documents) => {
                     res.status(200).json(documents);
                 })
